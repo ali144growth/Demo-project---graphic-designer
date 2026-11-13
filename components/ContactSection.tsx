@@ -1,9 +1,11 @@
 'use client';
 
 import React from 'react';
-import { Phone, MessageCircle, Mail, MapPin, Instagram, ExternalLink, ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
+import { Phone, Mail, MapPin, Instagram, ExternalLink, ArrowUpRight } from 'lucide-react';
 import type { Locale } from '@/lib/portfolio-data';
 import { PORTFOLIO_DATA } from '@/lib/portfolio-data';
+import { DownloadCvButton } from '@/components/DownloadCvButton';
 
 interface ContactSectionProps {
   locale: Locale;
@@ -95,8 +97,15 @@ export function ContactSection({ locale }: ContactSectionProps) {
               id="contact-link-whatsapp"
               className="group p-5 rounded-2xl bg-white/40 hover:bg-white border border-[#141414]/10 hover:border-[#FF4B2B] transition-all duration-200 flex flex-col items-start gap-3 active:scale-98"
             >
-              <div className="w-12 h-12 rounded-xl bg-[#141414] text-[#F4F1EA] group-hover:bg-[#FF4B2B] flex items-center justify-center transition-colors">
-                <MessageCircle className="w-5 h-5" aria-hidden="true" />
+              <div className="w-12 h-12 rounded-xl bg-[#141414] group-hover:bg-[#FF4B2B] flex items-center justify-center transition-colors p-2.5">
+                <Image
+                  src="https://ik.imagekit.io/imgy4/Images%20used%20in%20websites/whatsapp%20(4).png"
+                  alt="WhatsApp"
+                  width={24}
+                  height={24}
+                  className="w-6 h-6 object-contain"
+                  referrerPolicy="no-referrer"
+                />
               </div>
               <div>
                 <span className="text-xs font-mono uppercase tracking-wider text-[#575752] block">
@@ -195,6 +204,15 @@ export function ContactSection({ locale }: ContactSectionProps) {
                 <ArrowUpRight className="w-4 h-4 text-[#575752] group-hover:text-[#FF4B2B] transition-colors" aria-hidden="true" />
               </div>
             </a>
+          </div>
+
+          {/* Simple Download CV Button */}
+          <div className="mt-8 flex justify-center">
+            <DownloadCvButton
+              locale={locale}
+              variant="hero"
+              id="contact-download-cv-btn"
+            />
           </div>
 
           {/* Minimal Student Colophon / Disclaimer */}

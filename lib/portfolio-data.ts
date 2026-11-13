@@ -43,6 +43,9 @@ export const PORTFOLIO_DATA = {
     instagramHandle: '@fajer.design',
     behanceUrl: 'https://behance.net/fajeralghanim',
     behanceHandle: 'behance.net/fajeralghanim',
+    cvUrl: '/api/download-cv',
+    cvStaticUrl: '/Fajer-AlGhanim-Graphic-Design-CV.pdf',
+    cvFilename: 'Fajer-AlGhanim-Graphic-Design-CV.pdf',
   },
   projects: [
     {
@@ -89,7 +92,7 @@ export const PORTFOLIO_DATA = {
       subtitleAr: 'سلسلة عبوات زجاجية مع ملصقات بارزة ثنائية اللغة ومواد مستدامة',
       academicEn: 'Sustainable Packaging Lab',
       academicAr: 'مختبر تصميم التغليف المستدام',
-      image: 'https://images.unsplash.com/photo-1608248597359-0a69623e6188?q=80&w=1200&auto=format&fit=crop',
+      image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?q=80&w=1200&auto=format&fit=crop',
       aspect: 'aspect-[4/3]',
       rotationClass: 'hover:rotate-0 md:rotate-0',
       offsetClass: 'md:col-span-6',

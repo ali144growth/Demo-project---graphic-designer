@@ -166,14 +166,6 @@ export function HeroSection({ locale }: HeroSectionProps) {
                   </span>
                 </div>
               </div>
-
-              {/* Bold Floating Graphic Accent (Color Block with Monogram) */}
-              <div
-                className="absolute -bottom-6 ltr:-left-6 rtl:-right-6 w-20 h-20 bg-[#141414] text-[#F4F1EA] flex items-center justify-center font-display font-black text-2xl border-2 border-[#F4F1EA] shadow-xl"
-                aria-hidden="true"
-              >
-                <span>{isAr ? 'ف.غ' : 'FG'}</span>
-              </div>
             </div>
           </div>
 

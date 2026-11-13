@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { MessageCircle } from 'lucide-react';
+import Image from 'next/image';
 import type { Locale } from '@/lib/portfolio-data';
 import { PORTFOLIO_DATA } from '@/lib/portfolio-data';
 
@@ -34,8 +34,16 @@ export function FloatingWhatsApp({ locale }: FloatingWhatsAppProps) {
           aria-hidden="true"
         />
 
-        {/* WhatsApp Message Icon */}
-        <MessageCircle className="w-7 h-7 sm:w-8 sm:h-8 transition-transform group-hover:scale-110" aria-hidden="true" />
+        {/* WhatsApp Custom Icon */}
+        <Image
+          src="https://ik.imagekit.io/imgy4/Images%20used%20in%20websites/whatsapp%20(4).png"
+          alt="WhatsApp"
+          width={36}
+          height={36}
+          className="w-8 h-8 sm:w-9 sm:h-9 object-contain transition-transform group-hover:scale-110"
+          priority
+          referrerPolicy="no-referrer"
+        />
 
         {/* Hover Tooltip Pill */}
         <span

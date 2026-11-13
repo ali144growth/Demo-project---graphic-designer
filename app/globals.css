@@ -86,3 +86,29 @@
   animation: confident-pulse 2.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Hide scrollbar in mobile view while preserving smooth touch & wheel scrolling */
+@media (max-width: 768px) {
+  html,
+  body,
+  * {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+

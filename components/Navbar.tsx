@@ -1,9 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { Globe } from 'lucide-react';
 import type { Locale } from '@/lib/portfolio-data';
+import { DownloadCvButton } from '@/components/DownloadCvButton';
 
 interface NavbarProps {
   locale: Locale;
@@ -12,6 +13,7 @@ interface NavbarProps {
 
 export function Navbar({ locale, onToggleLocale }: NavbarProps) {
   const isAr = locale === 'ar';
+  const [imageError, setImageError] = useState(false);
 
   return (
     <header className="sticky top-0 z-40 w-full px-4 sm:px-6 lg:px-12 pt-4 pb-2 transition-all">
@@ -27,17 +29,22 @@ export function Navbar({ locale, onToggleLocale }: NavbarProps) {
           className="group flex items-center gap-3 focus:outline-none"
           aria-label={isAr ? 'الصفحة الرئيسية لفجر الغانم' : "Fajer Al-Ghanim Home"}
         >
-          <div className="relative flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-xl overflow-hidden bg-white/70 border border-[#141414]/15 shadow-sm transition-transform group-hover:scale-105 duration-200 shrink-0">
+          {!imageError ? (
             <Image
-              src="https://paleturquoise-alligator-394015.hostingersite.com/wp-content/uploads/2026/09/Pink-and-White-Aesthetic-Elegant-Logo.png"
+              src="https://ik.imagekit.io/imgy4/Images%20used%20in%20websites/Pink%20and%20White%20Aesthetic%20Elegant%20Logo.png"
               alt={isAr ? 'شعار فجر الغانم' : 'Fajer Al-Ghanim Logo'}
-              fill
-              sizes="(max-width: 640px) 44px, 48px"
-              className="object-contain p-0.5"
+              width={48}
+              height={48}
+              className="w-10 h-10 sm:w-12 sm:h-12 object-contain shrink-0 transition-transform group-hover:scale-105 duration-200"
               priority
               referrerPolicy="no-referrer"
+              onError={() => setImageError(true)}
             />
-          </div>
+          ) : (
+            <span className="font-serif font-black text-xl tracking-tighter text-[#e11d48]">
+              {isAr ? 'ف.غ' : 'FG'}
+            </span>
+          )}
 
           <div className="flex flex-col">
             <span className="font-bold text-sm tracking-tight text-[#141414] leading-tight group-hover:text-[#FF4B2B] transition-colors">
@@ -67,20 +74,21 @@ export function Navbar({ locale, onToggleLocale }: NavbarProps) {
             {isAr ? 'التواصل' : 'Contact'}
           </a>
 
-          {/* Bilingual Toggle Button */}
+          {/* One-Click Downloadable CV Button */}
+          <DownloadCvButton locale={locale} variant="navbar" />
+
+          {/* Bilingual Toggle Button: In mobile view only icon; on desktop shows EN or AR */}
           <button
             id="locale-toggle-button"
             type="button"
             onClick={onToggleLocale}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#141414]/5 hover:bg-[#141414]/10 active:scale-95 border border-[#141414]/15 transition-all text-xs font-bold text-[#141414]"
+            className="flex items-center justify-center p-2 sm:px-3 sm:py-1.5 sm:gap-2 rounded-xl bg-[#141414]/5 hover:bg-[#141414]/10 active:scale-95 border border-[#141414]/15 transition-all text-xs font-bold text-[#141414]"
             aria-label={isAr ? 'Switch to English' : 'التحويل إلى العربية'}
+            title={isAr ? 'Switch to English' : 'التحويل إلى العربية'}
           >
-            <Globe className="w-3.5 h-3.5 text-[#FF4B2B]" aria-hidden="true" />
-            <span className="tracking-wide">
-              {isAr ? 'EN' : 'عربي'}
-            </span>
-            <span className="text-[10px] uppercase font-mono px-1 py-0.5 rounded bg-[#FF4B2B] text-white">
-              {locale.toUpperCase()}
+            <Globe className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-[#FF4B2B] shrink-0" aria-hidden="true" />
+            <span className="font-mono font-bold tracking-wider hidden sm:inline">
+              {isAr ? 'EN' : 'AR'}
             </span>
           </button>
         </div>
